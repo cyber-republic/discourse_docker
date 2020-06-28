@@ -134,9 +134,9 @@ ADD cron.d_anacron /etc/cron.d/anacron
 RUN useradd discourse -s /bin/bash -m -U &&\
     mkdir -p /var/www &&\
     cd /var/www &&\
-    git clone https://github.com/discourse/discourse.git &&\
+    git clone --single-branch --branch social https://github.com/cyber-republic/discourse.git &&\
     cd discourse &&\
-    git remote set-branches --add origin tests-passed &&\
+    git remote set-branches --add origin social &&\
     chown -R discourse:discourse /var/www/discourse &&\
     cd /var/www/discourse &&\
     sudo -u discourse bundle install --deployment --jobs 4 --without test development &&\
